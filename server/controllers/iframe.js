@@ -26,7 +26,7 @@ export const createFrame = async (req, res) => {
     const user = await User.findOne({ _id: userId });
     await user.updateOne({ $push: { frameIds: frame._id } });
 
-    res.status(200).json({ url: frame.url });
+    res.status(200).json({ url: frame.url, id: frame._id });
   } catch (error) {
     res.status(500).json(error.message);
   }
